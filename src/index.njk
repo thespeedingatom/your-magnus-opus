@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+title: Blog
+---
+<div class="blog-header">
+  <h2 class="section-title">
+    <span class="title-accent">//</span> Writing
+  </h2>
+  <p class="section-subtitle">Thoughts on design, technology, and craft</p>
+</div>
+
+<div class="posts-container">
+  {% for post in collections.posts %}
+  <article class="post-card" data-parallax>
+    <div class="post-card-inner">
+      <div class="post-number" aria-hidden="true">{{ loop.index | padStart(2, '0') }}</div>
+
+      <header class="post-header">
+        <div class="post-meta">
+          <time datetime="{{ post.date | dateFormat }}">{{ post.date | shortDate }}</time>
+          <span class="meta-dot"></span>
+          <span class="reading-time">{{ post.templateContent | readingTime }}</span>
+        </div>
+
+        <h3 class="post-title">
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </h3>
+
+        {% if post.data.excerpt %}
+        <p class="post-excerpt">{{ post.data.excerpt }}</p>
+        {% endif %}
+      </header>
+
+      {% if post.data.tags %}
+      <footer class="post-footer">
+        <div class="post-tags">
+          {% for tag in post.data.tags %}
+            {% if tag !== "posts" %}
+            <span class="tag">{{ tag }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </footer>
+      {% endif %}
+
+      <div class="post-accent-line" aria-hidden="true"></div>
+    </div>
+  </article>
+  {% else %}
+  <div class="no-posts">
+    <p>No posts yet. Check back soon.</p>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Oversized decorative year -->
+<div class="footer-year" aria-hidden="true">
+  <span>2025</span>
+</div>

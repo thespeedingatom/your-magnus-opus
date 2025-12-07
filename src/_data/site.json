@@ -1,0 +1,15 @@
+{
+  "title": "Aman Mohd Azam",
+  "description": "A typography-focused personal blog inspired by Swiss design principles",
+  "author": {
+    "name": "Aman Mohd Azam",
+    "bio": "Designer, thinker, maker. Exploring the intersection of technology and human experience. Based in the digital realm, creating with intention.",
+    "role": "Creative Technologist"
+  },
+  "social": {
+    "github": "#",
+    "twitter": "#",
+    "linkedin": "#",
+    "email": "mailto:hello@example.com"
+  }
+}
