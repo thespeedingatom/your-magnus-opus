@@ -1,0 +1,13 @@
+{
+  "name": "aman-mohd-azam-blog",
+  "version": "1.0.0",
+  "description": "A Swiss design-inspired typography-focused personal blog",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "devDependencies": {}
+}
