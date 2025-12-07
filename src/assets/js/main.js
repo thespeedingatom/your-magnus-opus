@@ -46,8 +46,53 @@
     }
   };
 
+  const StickyHeader = {
+    init() {
+      this.header = document.querySelector('.post-sticky-header');
+      this.postHeader = document.querySelector('#post-header');
+      this.progressBar = document.querySelector('.reading-progress');
+
+      if (!this.header || !this.postHeader) return;
+
+      this.bindEvents();
+    },
+
+    updateHeader() {
+      const postHeaderRect = this.postHeader.getBoundingClientRect();
+      const shouldShow = postHeaderRect.bottom < 0;
+
+      if (shouldShow) {
+        this.header.classList.add('is-visible');
+      } else {
+        this.header.classList.remove('is-visible');
+      }
+
+      // Update reading progress
+      if (this.progressBar) {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = Math.min((window.scrollY / docHeight) * 100, 100);
+        this.progressBar.style.width = `${progress}%`;
+      }
+    },
+
+    bindEvents() {
+      let ticking = false;
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            this.updateHeader();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
     ThemeManager.init();
+    StickyHeader.init();
   });
 
 })();
