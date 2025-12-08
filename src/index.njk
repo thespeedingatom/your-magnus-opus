@@ -3,22 +3,19 @@ layout: layouts/base.njk
 title: Blog
 ---
 <div class="blog-header">
-  <h2 class="section-title">
-    <span class="title-accent">//</span> Writing
-  </h2>
-  <p class="section-subtitle">Thoughts on design, technology, and craft</p>
+  <h2 class="section-title">Writing</h2>
 </div>
 
 <div class="posts-container">
   {% for post in collections.posts %}
-  <article class="post-card" data-parallax>
+  <article class="post-card">
     <div class="post-card-inner">
       <div class="post-number" aria-hidden="true">{{ loop.index | padStart(2, '0') }}</div>
 
       <header class="post-header">
         <div class="post-meta">
           <time datetime="{{ post.date | dateFormat }}">{{ post.date | shortDate }}</time>
-          <span class="meta-dot"></span>
+          <span class="meta-sep">/</span>
           <span class="reading-time">{{ post.templateContent | readingTime }}</span>
         </div>
 
@@ -42,18 +39,11 @@ title: Blog
         </div>
       </footer>
       {% endif %}
-
-      <div class="post-accent-line" aria-hidden="true"></div>
     </div>
   </article>
   {% else %}
   <div class="no-posts">
-    <p>No posts yet. Check back soon.</p>
+    <p>No posts yet.</p>
   </div>
   {% endfor %}
-</div>
-
-<!-- Oversized decorative year -->
-<div class="footer-year" aria-hidden="true">
-  <span>2025</span>
 </div>
