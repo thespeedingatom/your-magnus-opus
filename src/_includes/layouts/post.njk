@@ -1,10 +1,14 @@
 ---
 layout: layouts/base.njk
 ---
-<!-- Sticky Post Header (appears on scroll) -->
+<!-- Flight Progress Header (appears on scroll) -->
 <div class="post-sticky-header" aria-hidden="true">
   <div class="post-sticky-inner">
-    <a href="/" class="post-sticky-back">&larr;</a>
+    <a href="/" class="post-sticky-back" aria-label="Return to departures">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </a>
     <span class="post-sticky-title">{{ title }}</span>
   </div>
   <div class="reading-progress"></div>
@@ -12,26 +16,53 @@ layout: layouts/base.njk
 
 <article class="post-full">
   <header class="post-full-header" id="post-header">
-    <a href="/" class="back-link">&larr; Back</a>
-    <div class="post-meta">
-      <time datetime="{{ date | dateFormat }}">{{ date | dateFormat }}</time>
-      <span class="meta-sep">/</span>
-      <span class="reading-time">{{ content | readingTime }}</span>
+    <a href="/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Departures
+    </a>
+
+    <!-- Boarding Pass Metadata -->
+    <div class="boarding-pass-meta">
+      <div class="meta-block">
+        <span class="meta-label">Date</span>
+        <time class="meta-value" datetime="{{ date | dateFormat }}">{{ date | shortDate }}</time>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">Duration</span>
+        <span class="meta-value">{{ content | readingTime }}</span>
+      </div>
       {% if tags %}
-      <span class="meta-sep">/</span>
-      <div class="post-tags-inline">
+      <div class="meta-block">
+        <span class="meta-label">Flight</span>
         {% for tag in tags %}
           {% if tag !== "posts" %}
-          <span class="tag">{{ tag }}</span>
+          <span class="meta-value meta-value--highlight">{{ tag | upper }}</span>
           {% endif %}
         {% endfor %}
       </div>
       {% endif %}
+      <div class="meta-block">
+        <span class="meta-label">Status</span>
+        <span class="meta-value" style="color: var(--color-status-go);">● In Flight</span>
+      </div>
     </div>
+
+    <!-- Destination (Title) -->
     <h1 class="post-full-title">{{ title }}</h1>
   </header>
 
   <div class="post-full-content prose">
     {{ content | safe }}
   </div>
+
+  <!-- Arrival Gate (Footer) -->
+  <footer class="post-footer-arrival">
+    <div class="arrival-divider"></div>
+    <div class="arrival-content">
+      <span class="arrival-label">Arrived</span>
+      <a href="/" class="arrival-link">Return to Terminal</a>
+    </div>
+  </footer>
 </article>
