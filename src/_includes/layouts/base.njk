@@ -6,15 +6,10 @@
   <title>{{ title or site.title }}</title>
   <meta name="description" content="{{ description or site.description }}">
 
-  <!-- Fonts - System Helvetica stack with fallbacks -->
-  <style>
-    @font-face {
-      font-family: 'Swiss';
-      src: local('Helvetica Neue'), local('Helvetica'), local('Arial');
-      font-weight: 100 900;
-      font-display: swap;
-    }
-  </style>
+  <!-- Fonts - Inter for wayfinding clarity, JetBrains Mono for data -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
