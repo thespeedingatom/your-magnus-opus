@@ -10,8 +10,6 @@ title: Blog
   {% for post in collections.posts %}
   <article class="post-card">
     <div class="post-card-inner">
-      <div class="post-number" aria-hidden="true">{{ loop.index | padStart(2, '0') }}</div>
-
       <header class="post-header">
         <div class="post-meta">
           <time datetime="{{ post.date | dateFormat }}">{{ post.date | shortDate }}</time>

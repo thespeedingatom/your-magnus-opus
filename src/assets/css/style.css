@@ -110,31 +110,7 @@ a {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: var(--space-8);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Oversized Typography — subtle background element */
-.typo-hero {
-  position: absolute;
-  top: -8%;
-  left: -15%;
-  pointer-events: none;
-  user-select: none;
-}
-
-.typo-letter {
-  font-size: 14rem;
-  font-weight: 900;
-  line-height: 1;
-  color: var(--color-border);
-  opacity: 0.4;
-  transition: color 0.2s;
-}
-
-[data-theme="dark"] .typo-letter {
-  opacity: 0.15;
+  padding: var(--space-12) var(--space-8);
 }
 
 /* Bio */
@@ -182,7 +158,6 @@ a {
   justify-content: center;
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
-  transition: color 0.15s, border-color 0.15s;
 }
 
 .social-btn:hover {
@@ -202,7 +177,6 @@ a {
   color: var(--color-text-muted);
   cursor: pointer;
   margin-top: var(--space-4);
-  transition: color 0.15s, border-color 0.15s;
 }
 
 .theme-toggle:hover {
@@ -231,13 +205,12 @@ a {
 .main-content {
   flex: 1;
   margin-left: var(--sidebar-width);
-  padding: var(--space-8) var(--space-12);
+  padding: var(--space-12) var(--space-16);
 }
 
 /* Blog Header */
 .blog-header {
-  margin-bottom: var(--space-12);
-  padding-top: var(--space-4);
+  margin-bottom: var(--space-16);
 }
 
 .section-title {
@@ -258,31 +231,12 @@ a {
 }
 
 .post-card-inner {
-  padding: var(--space-6) 0;
-  padding-left: var(--space-16);
+  padding: var(--space-8) 0;
   border-top: 1px solid var(--color-border);
-  position: relative;
 }
 
 .post-card:last-child .post-card-inner {
   border-bottom: 1px solid var(--color-border);
-}
-
-/* Post Number */
-.post-number {
-  position: absolute;
-  left: 0;
-  top: var(--space-6);
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  color: var(--color-border);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  transition: color 0.15s;
-}
-
-.post-card:hover .post-number {
-  color: var(--color-text-muted);
 }
 
 /* Post Meta */
@@ -308,10 +262,6 @@ a {
   letter-spacing: -0.01em;
   line-height: 1.3;
   margin-bottom: var(--space-2);
-}
-
-.post-title a {
-  transition: color 0.15s;
 }
 
 .post-title a:hover {
@@ -355,11 +305,10 @@ a {
    -------------------------------------------------------------------------- */
 .post-full {
   max-width: var(--content-max);
-  padding-top: var(--space-4);
 }
 
 .post-full-header {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-12);
 }
 
 .back-link {
@@ -367,7 +316,6 @@ a {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   margin-bottom: var(--space-6);
-  transition: color 0.15s;
 }
 
 .back-link:hover {
@@ -463,64 +411,6 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   Sticky Post Header
-   -------------------------------------------------------------------------- */
-.post-sticky-header {
-  position: fixed;
-  top: 0;
-  left: var(--sidebar-width);
-  right: 0;
-  background-color: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
-  z-index: 100;
-  opacity: 0;
-  transform: translateY(-100%);
-  transition: opacity 0.2s, transform 0.2s;
-  pointer-events: none;
-}
-
-.post-sticky-header.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.post-sticky-inner {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-4) var(--space-12);
-  max-width: calc(var(--content-max) + var(--space-12) * 2);
-}
-
-.post-sticky-back {
-  font-size: var(--text-base);
-  color: var(--color-text-muted);
-  transition: color 0.15s;
-  flex-shrink: 0;
-}
-
-.post-sticky-back:hover {
-  color: var(--color-text);
-}
-
-.post-sticky-title {
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.reading-progress {
-  height: 2px;
-  background-color: var(--color-accent);
-  width: 0%;
-  transition: width 0.1s linear;
-}
-
-/* --------------------------------------------------------------------------
    Responsive
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
@@ -529,15 +419,7 @@ a {
   }
 
   .main-content {
-    padding: var(--space-6) var(--space-8);
-  }
-
-  .typo-letter {
-    font-size: 10rem;
-  }
-
-  .post-sticky-inner {
-    padding: var(--space-4) var(--space-8);
+    padding: var(--space-8) var(--space-8);
   }
 }
 
@@ -559,16 +441,6 @@ a {
     padding: var(--space-6);
   }
 
-  .typo-hero {
-    top: -15%;
-    left: auto;
-    right: -10%;
-  }
-
-  .typo-letter {
-    font-size: 8rem;
-  }
-
   .bio {
     margin-top: var(--space-6);
   }
@@ -585,24 +457,6 @@ a {
   .section-title {
     font-size: var(--text-2xl);
   }
-
-  .post-card-inner {
-    padding-left: 0;
-  }
-
-  .post-number {
-    position: relative;
-    font-size: var(--text-2xl);
-    margin-bottom: var(--space-2);
-  }
-
-  .post-sticky-header {
-    left: 0;
-  }
-
-  .post-sticky-inner {
-    padding: var(--space-3) var(--space-4);
-  }
 }
 
 /* --------------------------------------------------------------------------
@@ -618,7 +472,7 @@ a {
    Print
    -------------------------------------------------------------------------- */
 @media print {
-  .sidebar, .theme-toggle, .social-links, .post-sticky-header {
+  .sidebar, .theme-toggle, .social-links {
     display: none !important;
   }
 
