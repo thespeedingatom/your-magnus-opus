@@ -13,23 +13,16 @@ layout: layouts/base.njk
 <article class="post-full">
   <header class="post-full-header" id="post-header">
     <a href="/" class="back-link">&larr; Back</a>
-    <div class="post-meta">
-      <time datetime="{{ date | dateFormat }}">{{ date | dateFormat }}</time>
-      <span class="meta-sep">/</span>
-      <span class="reading-time">{{ content | readingTime }}</span>
-      {% if tags %}
-      <span class="meta-sep">/</span>
-      <div class="post-tags-inline">
-        {% for tag in tags %}
-          {% if tag !== "posts" %}
-          <span class="tag">{{ tag }}</span>
-          {% endif %}
-        {% endfor %}
-      </div>
-      {% endif %}
-    </div>
+    {% if lead %}
+    <p class="post-lead">{{ lead }}</p>
+    {% endif %}
     <h1 class="post-full-title">{{ title }}</h1>
+    <div class="reading-time-prominent">{{ content | readingTime }}</div>
   </header>
+
+  {% if intro %}
+  <p class="post-intro">{{ intro | safe }}</p>
+  {% endif %}
 
   <div class="post-full-content prose">
     {{ content | safe }}

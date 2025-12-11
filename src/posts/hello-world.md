@@ -2,11 +2,11 @@
 title: "Hello, World"
 date: 2024-12-01
 excerpt: "Beginning a new space for thinking out loud about design, technology, and the things that matter."
+lead: "Beginning a new space for thinking out loud."
+intro: "Every blog needs a first post. This is mine—a place to share thoughts on design, technology, and craft. <strong>Welcome.</strong>"
 tags:
   - personal
 ---
-
-Every blog needs a first post. This is mine.
 
 ## Why Write?
 
