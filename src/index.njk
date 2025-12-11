@@ -1,49 +1,91 @@
 ---
 layout: layouts/base.njk
-title: Blog
+title: Home
 ---
-<div class="blog-header">
-  <h2 class="section-title">Writing</h2>
-</div>
 
-<div class="posts-container">
-  {% for post in collections.posts %}
-  <article class="post-card">
-    <div class="post-card-inner">
-      <div class="post-number" aria-hidden="true">{{ loop.index | padStart(2, '0') }}</div>
+<!-- Hero Section -->
+<section class="section section--hero">
+  <div class="section-container">
+    <div class="hero-content">
+      <h1 class="hero-name">
+        <span class="hero-name-line animate-split-line"><span>Aman</span></span>
+        <span class="hero-name-line animate-split-line"><span>Mohd</span></span>
+        <span class="hero-name-line animate-split-line"><span>Azam</span></span>
+      </h1>
 
-      <header class="post-header">
-        <div class="post-meta">
+      <p class="hero-tagline animate-fade-up">{{ site.author.role }}</p>
+
+      <div class="hero-scroll animate-fade-in" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="section section--about">
+  <div class="section-container">
+    <div class="about-content">
+      <div class="about-primary">
+        <p class="about-label animate-fade-up">About</p>
+        <div class="about-text animate-fade-up">
+          <p>Designer, thinker, maker. Exploring the intersection of technology and human experience.</p>
+        </div>
+      </div>
+
+      <div class="about-secondary animate-fade-up">
+        <p class="about-bio">{{ site.author.bio }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Writing Section -->
+<section class="section section--writing">
+  <div class="section-container">
+    <header class="section-header">
+      <p class="section-label animate-fade-up">Selected</p>
+      <h2 class="section-title animate-fade-up">Writing</h2>
+    </header>
+
+    <div class="posts-grid">
+      {% for post in collections.posts %}
+      <article class="post-card animate-fade-up">
+        <a href="{{ post.url }}" class="post-card-link" aria-label="Read {{ post.data.title }}"></a>
+
+        <span class="post-card-number" aria-hidden="true">{{ loop.index | padStart(2, '0') }}</span>
+
+        <div class="post-card-meta">
           <time datetime="{{ post.date | dateFormat }}">{{ post.date | shortDate }}</time>
-          <span class="meta-sep">/</span>
-          <span class="reading-time">{{ post.templateContent | readingTime }}</span>
+          <span class="sep">/</span>
+          <span>{{ post.templateContent | readingTime }}</span>
         </div>
 
-        <h3 class="post-title">
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-        </h3>
+        <h3 class="post-card-title">{{ post.data.title }}</h3>
 
         {% if post.data.excerpt %}
-        <p class="post-excerpt">{{ post.data.excerpt }}</p>
+        <p class="post-card-excerpt">{{ post.data.excerpt }}</p>
         {% endif %}
-      </header>
 
-      {% if post.data.tags %}
-      <footer class="post-footer">
-        <div class="post-tags">
+        {% if post.data.tags %}
+        <div class="post-card-tags">
           {% for tag in post.data.tags %}
             {% if tag !== "posts" %}
             <span class="tag">{{ tag }}</span>
             {% endif %}
           {% endfor %}
         </div>
-      </footer>
-      {% endif %}
+        {% endif %}
+      </article>
+      {% else %}
+      <div class="no-posts">
+        <p>No posts yet. Check back soon.</p>
+      </div>
+      {% endfor %}
     </div>
-  </article>
-  {% else %}
-  <div class="no-posts">
-    <p>No posts yet.</p>
   </div>
-  {% endfor %}
-</div>
+</section>
+
+<!-- Footer -->
+{% include "components/footer.njk" %}
