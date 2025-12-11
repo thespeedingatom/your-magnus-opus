@@ -35,11 +35,6 @@ module.exports = function(eleventyConfig) {
     return String(num).padStart(length, char || '0');
   });
 
-  // Split filter for text splitting
-  eleventyConfig.addFilter("split", (str, separator) => {
-    return str ? str.split(separator || " ") : [];
-  });
-
   // Collection for posts sorted by date
   eleventyConfig.addCollection("posts", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => {
