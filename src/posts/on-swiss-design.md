@@ -2,12 +2,12 @@
 title: "The Enduring Principles of Swiss Design"
 date: 2025-01-15
 excerpt: "How the International Typographic Style continues to shape our digital landscape through clarity, objectivity, and systematic thinking."
+lead: "Clarity, objectivity, and systematic thinking."
+intro: "Swiss design emerged in the 1950s from Switzerland and Germany. Its influence persists because its principles address fundamental human needs. <strong>Clarity. Hierarchy. Efficient communication.</strong>"
 tags:
   - design
   - typography
 ---
-
-Swiss design, or the International Typographic Style, emerged in the 1950s from Switzerland and Germany. Its influence persists because its principles address fundamental human needs: clarity, hierarchy, and efficient communication.
 
 ## The Grid as Foundation
 
