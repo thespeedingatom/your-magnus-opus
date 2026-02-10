@@ -1,49 +1,62 @@
 ---
 layout: layouts/base.njk
-title: Blog
+title: Departures
 ---
-<div class="blog-header">
-  <h2 class="section-title">Writing</h2>
+<!-- Departures Hall -->
+<header class="departures-header">
+  <h1 class="departures-title">Departures</h1>
+  <p class="departures-subtitle">All scheduled flights</p>
+</header>
+
+<!-- Board Header -->
+<div class="board-header" role="row">
+  <span class="board-header-cell">Flight</span>
+  <span class="board-header-cell">Destination</span>
+  <span class="board-header-cell">Date</span>
+  <span class="board-header-cell">Status</span>
 </div>
 
-<div class="posts-container">
+<!-- Flight Rows -->
+<div class="flights-container" role="list">
   {% for post in collections.posts %}
-  <article class="post-card">
-    <div class="post-card-inner">
-      <div class="post-number" aria-hidden="true">{{ loop.index | padStart(2, '0') }}</div>
+  <article class="flight-row" role="listitem">
+    <!-- Flight Code -->
+    <div class="flight-code">
+      AA-{{ loop.index | padStart(3, '0') }}
+    </div>
 
-      <header class="post-header">
-        <div class="post-meta">
-          <time datetime="{{ post.date | dateFormat }}">{{ post.date | shortDate }}</time>
-          <span class="meta-sep">/</span>
-          <span class="reading-time">{{ post.templateContent | readingTime }}</span>
-        </div>
+    <!-- Destination (Title + Excerpt) -->
+    <div class="flight-destination">
+      <h2 class="flight-title">
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </h2>
+      {% if post.data.excerpt %}
+      <p class="flight-excerpt">{{ post.data.excerpt }}</p>
+      {% endif %}
+    </div>
 
-        <h3 class="post-title">
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-        </h3>
+    <!-- Departure Time -->
+    <time class="flight-time" datetime="{{ post.date | dateFormat }}">
+      {{ post.date | shortDate }}
+    </time>
 
-        {% if post.data.excerpt %}
-        <p class="post-excerpt">{{ post.data.excerpt }}</p>
-        {% endif %}
-      </header>
-
+    <!-- Status -->
+    <div class="flight-status">
+      <span class="flight-duration">{{ post.templateContent | readingTime }}</span>
       {% if post.data.tags %}
-      <footer class="post-footer">
-        <div class="post-tags">
-          {% for tag in post.data.tags %}
-            {% if tag !== "posts" %}
-            <span class="tag">{{ tag }}</span>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </footer>
+      <div class="flight-tags">
+        {% for tag in post.data.tags %}
+          {% if tag !== "posts" %}
+          <span class="flight-tag">{{ tag }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
       {% endif %}
     </div>
   </article>
   {% else %}
-  <div class="no-posts">
-    <p>No posts yet.</p>
+  <div class="no-flights">
+    <p>No scheduled departures.</p>
   </div>
   {% endfor %}
 </div>
